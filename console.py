@@ -2,6 +2,7 @@
 """
 Module for console
 """
+import cmd
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -10,7 +11,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from models import storage
-import cmd
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -28,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Creates new instance of class called"""
-        command = line.split(' ')
+        command = shlex.split(line)
         if command[0] is '':
             print("** class name missing **")
         try:
@@ -41,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Prints the string representation of an instance based on the class name and id"""
-        command = line.split(' ')
+        command = shlex.split(line)
         if command[0] is '':
             print("** class name missing **")
         try:
@@ -59,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
-        command = line.split(' ')
+        command = shlex.split(line)
         if command[0] is '':
             print("** class name missing **")
         try:
@@ -77,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Prints all string representation of all instances based or not on the class name."""
-        command = line.split(' ')
+        command = shlex.split(line)
         objects = list(storage.all().values())
         try:
             obj = eval(command[0] + '()')
@@ -93,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """..."""
-        command = line.split(' ')
+        command = shlex.split(line)
         datatype = ''
         if command[0] is '':
             print("** class name missing **")
@@ -114,18 +115,11 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         try:
             command[3] = int(command[3])
-            datatype = 'int'
         except:
             try:
                 command[3] = float(command[3])
-                datatype = 'float'
             except:
-                datatype = 'string'
-        if datatype == 'string':
-            if (command[3][0] == '"' or command[3][-1] == '"') or\
-            (command[3][0] == "'" or command[3][-1] == "'"):
-                command[3] = command[3].replace('"', '')
-                command[3] = command[3].replace("'", '')
+                pass
         key = command[0] + '.' + command[1]
         setattr(storage.all()[key], command[2], command[3])
         storage.save()
