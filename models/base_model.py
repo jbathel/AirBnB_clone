@@ -25,7 +25,7 @@ class BaseModel():
         try:
             self.created_at
         except:
-            self.created_at = datetime.now()
+            self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
         """..."""
