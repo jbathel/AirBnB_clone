@@ -88,7 +88,42 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """..."""
+        command = line.split(' ')
+        datatype = ''
+        if command[0] is '':
+            print("** class name missing **")
+        try:
+            obj = eval(command[0] + '()')
+        except:
+            print("** class doesn't exist **")
 
+        if command[1] is '':
+           print("** instance id is missing **")
+
+        key = command[0] + '.' + command[1]
+        if key not in storage.all():
+            print("** no instance found **")
+        if command[2] is '':
+            print("** attribute name missing **")
+        if command[3] is '':
+            print("** value missing **")
+        try:
+            command[3] = int(command[3])
+            datatype = 'int'
+        except:
+            try:
+                command[3] = float(command[3])
+                datatype = 'float'
+            except:
+                datatype = 'string'
+        if datatype == 'string':
+            if (command[3][0] == '"' or command[3][-1] == '"') or\
+            (command[3][0] == "'" or command[3][-1] == "'"):
+                command[3] = command[3].replace('"', '')
+                command[3] = command[3].replace("'", '')
+        key = command[0] + '.' + command[1]
+        setattr(storage.all()[key], command[2], command[3])
+        storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
