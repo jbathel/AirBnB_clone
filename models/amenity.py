@@ -8,6 +8,6 @@ class Amenity(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """Initialize Amenity instance"""
-    super().__init__(self, *args, **kwargs)
+        super().__init__(self, *args, **kwargs)
 
     name = ''
