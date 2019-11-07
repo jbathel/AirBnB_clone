@@ -4,7 +4,7 @@ This is a Base Module for AirBnB
 """
 import datetime
 import json
-import uuid
+import uuid, sys
 
 
 class BaseModel():
@@ -15,13 +15,16 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    value = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                self.key = value
+                    value = datetime.datetime.strptime
+                    (value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key == "__class__":
+                    value = getattr(sys.modules[__name__], value)
+                setattr(self, key, value)
 
         try:
             self.id
         except:
-            self.id = uuid.uuid4()
+            self.id = str(uuid.uuid4())
         try:
             self.created_at
         except:
