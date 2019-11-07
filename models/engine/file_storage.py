@@ -35,6 +35,7 @@ class FileStorage():
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as json_file:
                 for obj_id, obj in (json.load(json_file)).items():
+                    obj = eval(obj['__class__'])(**(obj))
                     self.__objects[obj_id] = obj
         except:
             return
