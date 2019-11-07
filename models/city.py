@@ -2,6 +2,7 @@
 """
 This is a City Module for AirBnB
 """
+from models.base_model import BaseModel
 
 class City(BaseModel):
     """City Model"""
