@@ -30,12 +30,14 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """Creates new instance of class called"""
         command = shlex.split(line)
-        if command[0] is '':
+        if len(command) < 1:
             print("** class name missing **")
+            return
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
+            return
         print(obj.id)
         storage.new(obj)
         storage.save()
@@ -43,15 +45,17 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         """Prints the string representation of an instance based on the class name and id"""
         command = shlex.split(line)
-        if command[0] is '':
+        if len(command) < 1:
             print("** class name missing **")
+            return
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
-
-        if command[1] is '':
+            return
+        if len(command) < 2:
            print("** instance id is missing **")
+           return
 
         key = command[0] + '.' + command[1]
         if key not in storage.all():
@@ -61,15 +65,16 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
         command = shlex.split(line)
-        if command[0] is '':
+        if len(command) < 1:
             print("** class name missing **")
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
-
-        if command[1] is '':
+            return
+        if len(command) < 2:
            print("** instance id is missing **")
+           return
 
         key = command[0] + '.' + command[1]
         if key not in storage.all():
@@ -80,39 +85,44 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or not on the class name."""
         command = shlex.split(line)
         objects = list(storage.all().values())
+        if len(command) < 1:
+            for obj in objects:
+                print(obj)
+            return
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
+            return
         if command[0]:
             for obj in objects:
                 if command[0] == obj.__class__.__name__:
                     print(obj)
-        else:
-            for obj in objects:
-                print(obj)
 
     def do_update(self, line):
         """..."""
         command = shlex.split(line)
-        datatype = ''
-        if command[0] is '':
+        if len(command) < 1:
             print("** class name missing **")
+            return
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
-
-        if command[1] is '':
-           print("** instance id is missing **")
-
+            return
+        if len(command) < 2:
+            print("** instance id is missing **")
+            return
         key = command[0] + '.' + command[1]
         if key not in storage.all():
             print("** no instance found **")
-        if command[2] is '':
+            return
+        if len(command) < 3:
             print("** attribute name missing **")
-        if command[3] is '':
+            return
+        if len(command) < 4:
             print("** value missing **")
+            return
         try:
             command[3] = int(command[3])
         except:
