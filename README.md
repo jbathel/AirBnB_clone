@@ -35,14 +35,71 @@ description of the command interpreter:
 ### [3. BaseModel](./models/base_model.py)
 * Write a class BaseModel that defines all common attributes/methods for other classes:
 
+```
+[BaseModel] (0da511bb-b7cb-4843-9ebc-2f43c99aecdc) {'created_at': datetime.datetime(2019, 11, 8, 9, 38, 27, 11686), 'name': 'Holberton', 'my_number': 89, 'updated_at': datetime.datetime(2019, 11, 8, 9, 38, 27, 11686), 'id': '0da511bb-b7cb-4843-9ebc-2f43c99aecdc'}
+[BaseModel] (0da511bb-b7cb-4843-9ebc-2f43c99aecdc) {'created_at': datetime.datetime(2019, 11, 8, 9, 38, 27, 11686), 'name': 'Holberton', 'my_number': 89, 'updated_at': datetime.datetime(2019, 11, 8, 9, 38, 27, 12214), 'id': '0da511bb-b7cb-4843-9ebc-2f43c99aecdc'}
+{'created_at': '2019-11-08T09:38:27.011686', 'name': 'Holberton', 'my_number': 89, 'updated_at': '2019-11-08T09:38:27.012214', 'id': '0da511bb-b7cb-4843-9ebc-2f43c99aecdc', '__class__': 'BaseModel'}
+JSON of my_model:
+	created_at: (<class 'str'>) - 2019-11-08T09:38:27.011686
+	name: (<class 'str'>) - Holberton
+	my_number: (<class 'int'>) - 89
+	updated_at: (<class 'str'>) - 2019-11-08T09:38:27.012214
+	id: (<class 'str'>) - 0da511bb-b7cb-4843-9ebc-2f43c99aecdc
+	__class__: (<class 'str'>) - BaseModel
+```
 
 ### [4. Create BaseModel from dictionary](./models/engine/file_storage.py)
 * Previously we created a method to generate a dictionary representation of an instance (method to_dict()).
 
+```
+686dd4d3-0e29-4b94-b0ea-d75ed0e7e468
+[BaseModel] (686dd4d3-0e29-4b94-b0ea-d75ed0e7e468) {'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 40, 45, 483083), 'id': '686dd4d3-0e29-4b94-b0ea-d75ed0e7e468', 'name': 'Holberton', 'updated_at': datetime.datetime(2019, 11, 8, 9, 40, 45, 483083)}
+<class 'datetime.datetime'>
+--
+{'my_number': 89, 'created_at': '2019-11-08T09:40:45.483083', 'id': '686dd4d3-0e29-4b94-b0ea-d75ed0e7e468', 'name': 'Holberton', '__class__': 'BaseModel', 'updated_at': '2019-11-08T09:40:45.483083'}
+JSON of my_model:
+	my_number: (<class 'int'>) - 89
+	created_at: (<class 'str'>) - 2019-11-08T09:40:45.483083
+	id: (<class 'str'>) - 686dd4d3-0e29-4b94-b0ea-d75ed0e7e468
+	name: (<class 'str'>) - Holberton
+	__class__: (<class 'str'>) - BaseModel
+	updated_at: (<class 'str'>) - 2019-11-08T09:40:45.483083
+--
+686dd4d3-0e29-4b94-b0ea-d75ed0e7e468
+[BaseModel] (686dd4d3-0e29-4b94-b0ea-d75ed0e7e468) {'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 40, 45, 483083), 'id': '686dd4d3-0e29-4b94-b0ea-d75ed0e7e468', 'name': 'Holberton', 'updated_at': datetime.datetime(2019, 11, 8, 9, 40, 45, 483083)}
+<class 'datetime.datetime'>
+--
+False
+```
 
 ### [5. Store first object](./console.py)
 * Now we can recreate a BaseModel from another one by using a dictionary representation:
 
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json
+cat: file.json: No such file or directory
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./test_save_reload_base_model.py
+-- Reloaded objects --
+-- Create a new object --
+[BaseModel] (d64ac0c4-cc5b-462e-8332-35f3f6e62d7e) {'created_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558089), 'name': 'Holberton', 'my_number': 89, 'id': 'd64ac0c4-cc5b-462e-8332-35f3f6e62d7e', 'updated_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558106)}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"BaseModel.d64ac0c4-cc5b-462e-8332-35f3f6e62d7e": {"created_at": "2019-11-08T09:43:00.558089", "name": "Holberton", "__class__": "BaseModel", "my_number": 89, "id": "d64ac0c4-cc5b-462e-8332-35f3f6e62d7e", "updated_at": "2019-11-08T09:43:00.558106"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./test_save_reload_base_model.py
+-- Reloaded objects --
+[BaseModel] (d64ac0c4-cc5b-462e-8332-35f3f6e62d7e) {'name': 'Holberton', 'updated_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558106), 'id': 'd64ac0c4-cc5b-462e-8332-35f3f6e62d7e', 'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558089)}
+-- Create a new object --
+[BaseModel] (5b7d1866-d7bc-45c7-9958-98042c3a0343) {'name': 'Holberton', 'updated_at': datetime.datetime(2019, 11, 8, 9, 43, 15, 973202), 'id': '5b7d1866-d7bc-45c7-9958-98042c3a0343', 'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 43, 15, 973188)}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./test_save_reload_base_model.py
+-- Reloaded objects --
+[BaseModel] (5b7d1866-d7bc-45c7-9958-98042c3a0343) {'name': 'Holberton', 'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 43, 15, 973188), 'id': '5b7d1866-d7bc-45c7-9958-98042c3a0343', 'updated_at': datetime.datetime(2019, 11, 8, 9, 43, 15, 973202)}
+[BaseModel] (d64ac0c4-cc5b-462e-8332-35f3f6e62d7e) {'name': 'Holberton', 'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558089), 'id': 'd64ac0c4-cc5b-462e-8332-35f3f6e62d7e', 'updated_at': datetime.datetime(2019, 11, 8, 9, 43, 0, 558106)}
+-- Create a new object --
+[BaseModel] (c2294559-6f6c-4a76-abae-d14cb8babd02) {'name': 'Holberton', 'my_number': 89, 'created_at': datetime.datetime(2019, 11, 8, 9, 44, 20, 205907), 'id': 'c2294559-6f6c-4a76-abae-d14cb8babd02', 'updated_at': datetime.datetime(2019, 11, 8, 9, 44, 20, 205924)}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"BaseModel.c2294559-6f6c-4a76-abae-d14cb8babd02": {"name": "Holberton", "my_number": 89, "__class__": "BaseModel", "created_at": "2019-11-08T09:44:20.205907", "id": "c2294559-6f6c-4a76-abae-d14cb8babd02", "updated_at": "2019-11-08T09:44:20.205924"}, "BaseModel.5b7d1866-d7bc-45c7-9958-98042c3a0343": {"name": "Holberton", "my_number": 89, "__class__": "BaseModel", "created_at": "2019-11-08T09:43:15.973188", "id": "5b7d1866-d7bc-45c7-9958-98042c3a0343", "updated_at": "2019-11-08T09:43:15.973202"}, "BaseModel.d64ac0c4-cc5b-462e-8332-35f3f6e62d7e": {"name": "Holberton", "my_number": 89, "__class__": "BaseModel", "created_at": "2019-11-08T09:43:00.558089", "id": "d64ac0c4-cc5b-462e-8332-35f3f6e62d7e", "updated_at": "2019-11-08T09:43:00.558106"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+```
 
 ### [6. Console 0.0.1](./console.py)
 * Write a program called console.py that contains the entry point of the command interpreter:
