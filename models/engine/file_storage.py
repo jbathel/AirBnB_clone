@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is a model for File Storage
+This is a module for File Storage
 """
 import json
 
