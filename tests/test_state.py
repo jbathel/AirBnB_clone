@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-"""Unittest for BaseModel"""
+"""Unittest for State"""
 from models.base_model import BaseModel
+from models.state import State
 import os
 import unittest
 import sys
@@ -10,73 +11,73 @@ import uuid
 import time
 from datetime import datetime
 
-class TestBaseModel(unittest.TestCase):
-    """BaseModel uuid testing"""
+class TestState(unittest.TestCase):
+    """State uuid testing"""
     def test_uuid(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'id'))
+        state1 = State()
+        self.assertTrue(hasattr(state1, 'id'))
 
     def test_uniq_uuid(self):
         """..."""
-        bm1 = BaseModel()
-        bm2 = BaseModel()
-        self.assertNotEqual(bm1.id, bm2.id)
+        state1 = State()
+        state2 = State()
+        self.assertNotEqual(state1.id, state2.id)
 
     def test_base_model(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertIsInstance(bm1, BaseModel)
+        state1 = State()
+        self.assertIsInstance(state1, State)
 
     def test_uuid_str(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertIsInstance(bm1.id, str)
+        state1 = State()
+        self.assertIsInstance(state1.id, str)
 
     def test_created_at(self):
         """..."""
-        bm1 = BaseModel()
+        state1 = State()
         time.sleep(2)
-        bm2 = BaseModel()
-        self.assertNotEqual(bm1.created_at, bm2.created_at)
+        state2 = State()
+        self.assertNotEqual(state1.created_at, state2.created_at)
 
     def test_create_update_equal(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertEqual(bm1.created_at, bm1.updated_at)
+        state1 = State()
+        self.assertEqual(state1.created_at, state1.updated_at)
 
     def test_create_update_not_equal(self):
         """..."""
-        bm1 = BaseModel()
+        state1 = State()
         time.sleep(2)
-        bm1.updated_at = datetime.now()
-        self.assertNotEqual(bm1.created_at, bm1.updated_at)
+        state1.updated_at = datetime.now()
+        self.assertNotEqual(state1.created_at, state1.updated_at)
 
     def test_created_at_exists(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'created_at'))
+        state1 = State()
+        self.assertTrue(hasattr(state1, 'created_at'))
 
     def test_updated_at_exists(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'updated_at'))
+        state1 = State()
+        self.assertTrue(hasattr(state1, 'updated_at'))
 
     def test_created_at_datetime(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(isinstance(bm1.created_at, datetime))
+        state1 = State()
+        self.assertTrue(isinstance(state1.created_at, datetime))
 
     def test_updated_at_datetime(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(isinstance(bm1.updated_at, datetime))
+        state1 = State()
+        self.assertTrue(isinstance(state1.updated_at, datetime))
 
     def test_base_model_input_dict(self):
         """..."""
         attributes = {"id": "1"}
-        bm1 = BaseModel(**attributes)
-        self.assertEqual(attributes['id'], bm1.id)
+        state1 = State(**attributes)
+        self.assertEqual(attributes['id'], state1.id)
 
 if __name__ == '__main__':
     unittest.main()

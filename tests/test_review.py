@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-"""Unittest for BaseModel"""
+"""Unittest for Review"""
 from models.base_model import BaseModel
+from models.review import Review
 import os
 import unittest
 import sys
@@ -10,73 +11,73 @@ import uuid
 import time
 from datetime import datetime
 
-class TestBaseModel(unittest.TestCase):
-    """BaseModel uuid testing"""
+class TestReview(unittest.TestCase):
+    """Review uuid testing"""
     def test_uuid(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'id'))
+        review1 = Review()
+        self.assertTrue(hasattr(review1, 'id'))
 
     def test_uniq_uuid(self):
         """..."""
-        bm1 = BaseModel()
-        bm2 = BaseModel()
-        self.assertNotEqual(bm1.id, bm2.id)
+        review1 = Review()
+        review2 = Review()
+        self.assertNotEqual(review1.id, review2.id)
 
     def test_base_model(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertIsInstance(bm1, BaseModel)
+        review1 = Review()
+        self.assertIsInstance(review1, Review)
 
     def test_uuid_str(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertIsInstance(bm1.id, str)
+        review1 = Review()
+        self.assertIsInstance(review1.id, str)
 
     def test_created_at(self):
         """..."""
-        bm1 = BaseModel()
+        review1 = Review()
         time.sleep(2)
-        bm2 = BaseModel()
-        self.assertNotEqual(bm1.created_at, bm2.created_at)
+        review2 = Review()
+        self.assertNotEqual(review1.created_at, review2.created_at)
 
     def test_create_update_equal(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertEqual(bm1.created_at, bm1.updated_at)
+        review1 = Review()
+        self.assertEqual(review1.created_at, review1.updated_at)
 
     def test_create_update_not_equal(self):
         """..."""
-        bm1 = BaseModel()
+        review1 = Review()
         time.sleep(2)
-        bm1.updated_at = datetime.now()
-        self.assertNotEqual(bm1.created_at, bm1.updated_at)
+        review1.updated_at = datetime.now()
+        self.assertNotEqual(review1.created_at, review1.updated_at)
 
     def test_created_at_exists(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'created_at'))
+        review1 = Review()
+        self.assertTrue(hasattr(review1, 'created_at'))
 
     def test_updated_at_exists(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, 'updated_at'))
+        review1 = Review()
+        self.assertTrue(hasattr(review1, 'updated_at'))
 
     def test_created_at_datetime(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(isinstance(bm1.created_at, datetime))
+        review1 = Review()
+        self.assertTrue(isinstance(review1.created_at, datetime))
 
     def test_updated_at_datetime(self):
         """..."""
-        bm1 = BaseModel()
-        self.assertTrue(isinstance(bm1.updated_at, datetime))
+        review1 = Review()
+        self.assertTrue(isinstance(review1.updated_at, datetime))
 
     def test_base_model_input_dict(self):
         """..."""
         attributes = {"id": "1"}
-        bm1 = BaseModel(**attributes)
-        self.assertEqual(attributes['id'], bm1.id)
+        review1 = Review(**attributes)
+        self.assertEqual(attributes['id'], review1.id)
 
 if __name__ == '__main__':
     unittest.main()
