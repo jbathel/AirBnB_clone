@@ -3,6 +3,7 @@
 Module for console
 """
 import cmd
+from datetime import datetime
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -158,6 +159,7 @@ class HBNBCommand(cmd.Cmd):
                 pass
         key = command[0] + '.' + command[1]
         setattr(storage.all()[key], command[2], command[3])
+        setattr(storage.all()[key], 'updated_at', datetime.now())
         storage.save()
 
 
