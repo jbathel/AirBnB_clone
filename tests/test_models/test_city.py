@@ -35,7 +35,7 @@ class TestCityModel(unittest.TestCase):
 
     def test_city_model_BaseModel(self):
         """Test that object created is of BaseModel"""
-        self.assertIsInstance(self.city1, BaseModel)
+        self.assertTrue(issubclass(type(self.city1), BaseModel))
 
     def test_uuid_str(self):
         """Test that id is of type string"""
@@ -75,6 +75,25 @@ class TestCityModel(unittest.TestCase):
         attributes = {"id": "1"}
         self.city1 = City(**attributes)
         self.assertEqual(attributes['id'], self.city1.id)
+
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.city1.to_dict()
+        self.assertEqual(dictionary["created_at"],
+                         self.city1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"],
+                         self.city1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], "City")
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.city1.__class__.__name__, self.city1.id, self.city1.__dict__)
+        self.assertEqual(str(self.city1), string)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -35,7 +35,7 @@ class TestAmenityModel(unittest.TestCase):
 
     def test_amenity_model_of_BaseModel(self):
         """Test that object created is Amenity"""
-        self.assertIsInstance(self.amenity1, BaseModel)
+        self.assertTrue(issubclass(type(self.amenity1), BaseModel))
 
     def test_uuid_str(self):
         """Test that id for Amenity is type string"""
@@ -76,10 +76,29 @@ class TestAmenityModel(unittest.TestCase):
         self.amenity1 = Amenity(**attributes)
         self.assertEqual(attributes['id'], self.amenity1.id)
 
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.amenity1.to_dict()
+        self.assertEqual(dictionary["created_at"],
+                         self.amenity1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"],
+                         self.amenity1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], "Amenity")
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.amenity1.__class__.__name__, self.amenity1.id, self.amenity1.__dict__)
+        self.assertEqual(str(self.amenity1), string)
+
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
         del self.amenity1
         del self.amenity2
+
 
 if __name__ == '__main__':
     unittest.main()

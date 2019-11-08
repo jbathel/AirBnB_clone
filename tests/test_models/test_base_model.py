@@ -40,16 +40,19 @@ class TestBaseModel(unittest.TestCase):
     def test_created_at(self):
         """Test that objects are created with datetime"""
         time.sleep(2)
-        self.assertNotEqual(self.basemodel1.created_at, self.basemodel2.created_at)
+        self.assertNotEqual(self.basemodel1.created_at,
+                            self.basemodel2.created_at)
 
     def test_create_update_equal(self):
         """Test that created_at and updated_at or equal upon creation"""
-        self.assertEqual(self.basemodel1.created_at, self.basemodel1.updated_at)
+        self.assertEqual(self.basemodel1.created_at,
+                         self.basemodel1.updated_at)
 
     def test_create_update_not_equal(self):
         """Test that created_at datetime is not the same as updated_at"""
         self.basemodel1.updated_at = datetime.now()
-        self.assertNotEqual(self.basemodel1.created_at, self.basemodel1.updated_at)
+        self.assertNotEqual(self.basemodel1.created_at,
+                            self.basemodel1.updated_at)
 
     def test_created_at_exists(self):
         """Test the created_at datetime object exists"""
@@ -78,16 +81,25 @@ class TestBaseModel(unittest.TestCase):
         """ created_at, updated_at values """
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         dictionary = self.basemodel1.to_dict()
-        self.assertEqual(dictionary["created_at"], self.basemodel1.created_at.strftime(time_format))
-        self.assertEqual(dictionary["updated_at"], self.basemodel1.updated_at.strftime(time_format))
+        self.assertEqual(
+            dictionary["created_at"], self.basemodel1.created_at.strftime(time_format))
+        self.assertEqual(
+            dictionary["updated_at"], self.basemodel1.updated_at.strftime(time_format))
         self.assertEqual(dictionary["__class__"], "BaseModel")
         self.assertEqual(type(dictionary["created_at"]), str)
         self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.basemodel1.__class__.__name__, self.basemodel1.id, self.basemodel1.__dict__)
+        self.assertEqual(str(self.basemodel1), string)
 
     def tearDown(self):
         """Tear dowm BaseModel Objects for testing"""
         del self.basemodel1
         del self.basemodel2
+
 
 if __name__ == '__main__':
     unittest.main()
