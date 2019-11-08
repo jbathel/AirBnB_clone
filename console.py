@@ -19,11 +19,15 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        """Empty Line"""
+        pass
+
     def do_quit(self, line):
         """
         Quits the command line - type 'quit' to exit command line
         """
-        exit()
+        return True
 
     def do_EOF(self, line):
         """
@@ -152,6 +156,7 @@ class HBNBCommand(cmd.Cmd):
         key = command[0] + '.' + command[1]
         setattr(storage.all()[key], command[2], command[3])
         storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
