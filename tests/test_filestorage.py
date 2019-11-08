@@ -12,7 +12,7 @@ import time
 from datetime import datetime
 
 class TestFileStorageModel(unittest.TestCase):
-    """..."""
+    """Unit Tests for FileStorage Model"""
 
     @classmethod
     def setUp(self):
@@ -82,9 +82,27 @@ class TestFileStorageModel(unittest.TestCase):
         with open('file.json') as file:
             self.assertIn(key, file.read())
 
+    def test_FileStorage_reload_file_exists(self):
+        """Test the reload() method to check if file.json exists"""
+        bm1 = BaseModel()
+        class_name = bm1.__class__.__name__
+        key = class_name + '.' + str(bm1.id)
+        storage = FileStorage()
+        storage.new(bm1)
+        storage.save()
+        self.assertTrue(os.path.exists('file.json'))
 
-
-
+    def test_FileStorage_reload_successful(self):
+        """Test the reload() method to see if object reloads successfully"""
+        FileStorage._FileStorage__objects = {}
+        bm1 = BaseModel()
+        class_name = bm1.__class__.__name__
+        key = class_name + '.' + str(bm1.id)
+        storage = FileStorage()
+        storage.new(bm1)
+        storage.save()
+        storage.reload()
+        self.assertIn(key, FileStorage._FileStorage__objects)
 
 if __name__ == '__main__':
     unittest.main()
