@@ -3,7 +3,8 @@
 This is a Base Module for AirBnB
 """
 from datetime import datetime
-import json, uuid
+import json
+import uuid
 
 
 class BaseModel():
@@ -25,15 +26,16 @@ class BaseModel():
         try:
             self.created_at
         except:
-            self.created_at = datetime.now()
+            self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
         """..."""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
+
     def save(self):
         """..."""
-        self.update_at = datetime.datetime.now()
+        self.update_at = datetime.now()
 
     def to_dict(self):
         """..."""
