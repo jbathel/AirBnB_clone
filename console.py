@@ -54,7 +54,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(obj.id)
-        obj.save()
+        models.storage.new(obj)
+        models.storage.save()
 
     def do_show(self, line):
         """
@@ -78,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = command[0] + '.' + command[1]
-        if key not in storage.all():
+        if key not in models.storage.all():
             print("** no instance found **")
             return
         print(models.storage.all()[key])
