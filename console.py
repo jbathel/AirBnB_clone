@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         if len(command) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
             return
 
         key = command[0] + '.' + command[1]
@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         if len(command) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
             return
 
         key = command[0] + '.' + command[1]
@@ -188,7 +188,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         if len(command) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
             return
         key = command[0] + '.' + command[1]
         if key not in storage.all():
