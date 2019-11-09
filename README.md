@@ -149,10 +149,57 @@ vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
 ### [8. First User](./models/state.py)
 * Write a class User that inherits from BaseModel:
 
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4": {"__class__": "BaseModel", "id": "2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4", "updated_at": "2017-09-28T21:11:14.333862", "created_at": "2017-09-28T21:11:14.333852"}, "BaseModel.a42ee380-c959-450e-ad29-c840a898cfce": {"__class__": "BaseModel", "id": "a42ee380-c959-450e-ad29-c840a898cfce", "updated_at": "2017-09-28T21:11:15.504296", "created_at": "2017-09-28T21:11:15.504287"}, "BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f": {"__class__": "BaseModel", "id": "af9b4cbd-2ce1-4e6e-8259-f578097dd15f", "updated_at": "2017-09-28T21:11:12.971544", "created_at": "2017-09-28T21:11:12.971521"}, "BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba": {"__class__": "BaseModel", "id": "38a22b25-ae9c-4fa9-9f94-59b3eb51bfba", "updated_at": "2017-09-28T21:11:13.753347", "created_at": "2017-09-28T21:11:13.753337"}, "BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4": {"__class__": "BaseModel", "id": "9bf17966-b092-4996-bd33-26a5353cccb4", "updated_at": "2017-09-28T21:11:14.963058", "created_at": "2017-09-28T21:11:14.963049"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+-- Reloaded objects --
+[BaseModel] (9bf17966-b092-4996-bd33-26a5353cccb4) {'id': '9bf17966-b092-4996-bd33-26a5353cccb4', 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 963049), 'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 963058)}
+[BaseModel] (a42ee380-c959-450e-ad29-c840a898cfce) {'id': 'a42ee380-c959-450e-ad29-c840a898cfce', 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 15, 504287), 'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 15, 504296)}
+[BaseModel] (38a22b25-ae9c-4fa9-9f94-59b3eb51bfba) {'id': '38a22b25-ae9c-4fa9-9f94-59b3eb51bfba', 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 13, 753337), 'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 13, 753347)}
+[BaseModel] (af9b4cbd-2ce1-4e6e-8259-f578097dd15f) {'id': 'af9b4cbd-2ce1-4e6e-8259-f578097dd15f', 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 12, 971521), 'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 12, 971544)}
+[BaseModel] (2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4) {'id': '2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4', 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 333852), 'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 333862)}
+-- Create a new User --
+[User] (83e494ae-8e2f-439e-a586-2e68e84671dc) {'last_name': 'Holberton', 'first_name': 'Betty', 'password': 'root', 'email': 'airbnb@holbertonshool.com', 'id': '83e494ae-8e2f-439e-a586-2e68e84671dc', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 762584), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 762602)}
+-- Create a new User 2 --
+[User] (9fd30a8b-ab1d-40df-b83b-7e5419c606d2) {'first_name': 'John', 'password': 'root', 'email': 'airbnb2@holbertonshool.com', 'id': '9fd30a8b-ab1d-40df-b83b-7e5419c606d2', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 764619), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 764641)}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./test_save_reload_user.py
+-- Reloaded objects --
+[BaseModel] (9bf17966-b092-4996-bd33-26a5353cccb4) {'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 963058), 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 963049), 'id': '9bf17966-b092-4996-bd33-26a5353cccb4'}
+[BaseModel] (38a22b25-ae9c-4fa9-9f94-59b3eb51bfba) {'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 13, 753347), 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 13, 753337), 'id': '38a22b25-ae9c-4fa9-9f94-59b3eb51bfba'}
+[BaseModel] (2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4) {'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 333862), 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 14, 333852), 'id': '2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4'}
+[User] (9fd30a8b-ab1d-40df-b83b-7e5419c606d2) {'id': '9fd30a8b-ab1d-40df-b83b-7e5419c606d2', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 764619), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 764641), 'email': 'airbnb2@holbertonshool.com', 'password': 'root', 'first_name': 'John'}
+[BaseModel] (af9b4cbd-2ce1-4e6e-8259-f578097dd15f) {'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 12, 971544), 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 12, 971521), 'id': 'af9b4cbd-2ce1-4e6e-8259-f578097dd15f'}
+[BaseModel] (a42ee380-c959-450e-ad29-c840a898cfce) {'updated_at': datetime.datetime(2017, 9, 28, 21, 11, 15, 504296), 'created_at': datetime.datetime(2017, 9, 28, 21, 11, 15, 504287), 'id': 'a42ee380-c959-450e-ad29-c840a898cfce'}
+[User] (83e494ae-8e2f-439e-a586-2e68e84671dc) {'id': '83e494ae-8e2f-439e-a586-2e68e84671dc', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 762584), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 23, 762602), 'last_name': 'Holberton', 'email': 'airbnb@holbertonshool.com', 'password': 'root', 'first_name': 'Betty'}
+-- Create a new User --
+[User] (40b4407d-2945-404e-ba72-1e625abd8965) {'id': '40b4407d-2945-404e-ba72-1e625abd8965', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 44, 168207), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 44, 168227), 'last_name': 'Holberton', 'email': 'airbnb@holbertonshool.com', 'password': 'root', 'first_name': 'Betty'}
+-- Create a new User 2 --
+[User] (8d5f2bf6-e59a-417f-b4ed-2a2384b99060) {'id': '8d5f2bf6-e59a-417f-b4ed-2a2384b99060', 'created_at': datetime.datetime(2019, 11, 9, 3, 36, 44, 170341), 'updated_at': datetime.datetime(2019, 11, 9, 3, 36, 44, 170362), 'email': 'airbnb2@holbertonshool.com', 'password': 'root', 'first_name': 'John'}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"User.40b4407d-2945-404e-ba72-1e625abd8965": {"id": "40b4407d-2945-404e-ba72-1e625abd8965", "created_at": "2019-11-09T03:36:44.168207", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:44.168227", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}, "BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4": {"updated_at": "2017-09-28T21:11:14.963058", "id": "9bf17966-b092-4996-bd33-26a5353cccb4", "created_at": "2017-09-28T21:11:14.963049", "__class__": "BaseModel"}, "BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba": {"updated_at": "2017-09-28T21:11:13.753347", "id": "38a22b25-ae9c-4fa9-9f94-59b3eb51bfba", "created_at": "2017-09-28T21:11:13.753337", "__class__": "BaseModel"}, "BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4": {"updated_at": "2017-09-28T21:11:14.333862", "id": "2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4", "created_at": "2017-09-28T21:11:14.333852", "__class__": "BaseModel"}, "User.8d5f2bf6-e59a-417f-b4ed-2a2384b99060": {"id": "8d5f2bf6-e59a-417f-b4ed-2a2384b99060", "created_at": "2019-11-09T03:36:44.170341", "updated_at": "2019-11-09T03:36:44.170362", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f": {"updated_at": "2017-09-28T21:11:12.971544", "id": "af9b4cbd-2ce1-4e6e-8259-f578097dd15f", "created_at": "2017-09-28T21:11:12.971521", "__class__": "BaseModel"}, "User.9fd30a8b-ab1d-40df-b83b-7e5419c606d2": {"id": "9fd30a8b-ab1d-40df-b83b-7e5419c606d2", "created_at": "2019-11-09T03:36:23.764619", "updated_at": "2019-11-09T03:36:23.764641", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.a42ee380-c959-450e-ad29-c840a898cfce": {"updated_at": "2017-09-28T21:11:15.504296", "id": "a42ee380-c959-450e-ad29-c840a898cfce", "created_at": "2017-09-28T21:11:15.504287", "__class__": "BaseModel"}, "User.83e494ae-8e2f-439e-a586-2e68e84671dc": {"id": "83e494ae-8e2f-439e-a586-2e68e84671dc", "created_at": "2019-11-09T03:36:23.762584", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:23.762602", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"User.40b4407d-2945-404e-ba72-1e625abd8965": {"id": "40b4407d-2945-404e-ba72-1e625abd8965", "created_at": "2019-11-09T03:36:44.168207", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:44.168227", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}, "BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4": {"updated_at": "2017-09-28T21:11:14.963058", "id": "9bf17966-b092-4996-bd33-26a5353cccb4", "created_at": "2017-09-28T21:11:14.963049", "__class__": "BaseModel"}, "BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba": {"updated_at": "2017-09-28T21:11:13.753347", "id": "38a22b25-ae9c-4fa9-9f94-59b3eb51bfba", "created_at": "2017-09-28T21:11:13.753337", "__class__": "BaseModel"}, "BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4": {"updated_at": "2017-09-28T21:11:14.333862", "id": "2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4", "created_at": "2017-09-28T21:11:14.333852", "__class__": "BaseModel"}, "User.8d5f2bf6-e59a-417f-b4ed-2a2384b99060": {"id": "8d5f2bf6-e59a-417f-b4ed-2a2384b99060", "created_at": "2019-11-09T03:36:44.170341", "updated_at": "2019-11-09T03:36:44.170362", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f": {"updated_at": "2017-09-28T21:11:12.971544", "id": "af9b4cbd-2ce1-4e6e-8259-f578097dd15f", "created_at": "2017-09-28T21:11:12.971521", "__class__": "BaseModel"}, "User.9fd30a8b-ab1d-40df-b83b-7e5419c606d2": {"id": "9fd30a8b-ab1d-40df-b83b-7e5419c606d2", "created_at": "2019-11-09T03:36:23.764619", "updated_at": "2019-11-09T03:36:23.764641", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.a42ee380-c959-450e-ad29-c840a898cfce": {"updated_at": "2017-09-28T21:11:15.504296", "id": "a42ee380-c959-450e-ad29-c840a898cfce", "created_at": "2017-09-28T21:11:15.504287", "__class__": "BaseModel"}, "User.83e494ae-8e2f-439e-a586-2e68e84671dc": {"id": "83e494ae-8e2f-439e-a586-2e68e84671dc", "created_at": "2019-11-09T03:36:23.762584", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:23.762602", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ cat file.json ; echo ""
+{"User.40b4407d-2945-404e-ba72-1e625abd8965": {"id": "40b4407d-2945-404e-ba72-1e625abd8965", "created_at": "2019-11-09T03:36:44.168207", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:44.168227", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}, "BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4": {"updated_at": "2017-09-28T21:11:14.963058", "id": "9bf17966-b092-4996-bd33-26a5353cccb4", "created_at": "2017-09-28T21:11:14.963049", "__class__": "BaseModel"}, "BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba": {"updated_at": "2017-09-28T21:11:13.753347", "id": "38a22b25-ae9c-4fa9-9f94-59b3eb51bfba", "created_at": "2017-09-28T21:11:13.753337", "__class__": "BaseModel"}, "BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4": {"updated_at": "2017-09-28T21:11:14.333862", "id": "2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4", "created_at": "2017-09-28T21:11:14.333852", "__class__": "BaseModel"}, "User.8d5f2bf6-e59a-417f-b4ed-2a2384b99060": {"id": "8d5f2bf6-e59a-417f-b4ed-2a2384b99060", "created_at": "2019-11-09T03:36:44.170341", "updated_at": "2019-11-09T03:36:44.170362", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f": {"updated_at": "2017-09-28T21:11:12.971544", "id": "af9b4cbd-2ce1-4e6e-8259-f578097dd15f", "created_at": "2017-09-28T21:11:12.971521", "__class__": "BaseModel"}, "User.9fd30a8b-ab1d-40df-b83b-7e5419c606d2": {"id": "9fd30a8b-ab1d-40df-b83b-7e5419c606d2", "created_at": "2019-11-09T03:36:23.764619", "updated_at": "2019-11-09T03:36:23.764641", "email": "airbnb2@holbertonshool.com", "first_name": "John", "password": "root", "__class__": "User"}, "BaseModel.a42ee380-c959-450e-ad29-c840a898cfce": {"updated_at": "2017-09-28T21:11:15.504296", "id": "a42ee380-c959-450e-ad29-c840a898cfce", "created_at": "2017-09-28T21:11:15.504287", "__class__": "BaseModel"}, "User.83e494ae-8e2f-439e-a586-2e68e84671dc": {"id": "83e494ae-8e2f-439e-a586-2e68e84671dc", "created_at": "2019-11-09T03:36:23.762584", "email": "airbnb@holbertonshool.com", "updated_at": "2019-11-09T03:36:23.762602", "last_name": "Holberton", "first_name": "Betty", "password": "root", "__class__": "User"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+```
 
 ### [9. More classes!](./console.py)
 * Write all those classes that inherit from BaseModel:
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) all
+["[Place] (82b45132-04bb-4153-bc22-0a2ed44c12c0) {'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 16, 767687), 'id': '82b45132-04bb-4153-bc22-0a2ed44c12c0', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 16, 767687)}", "[Amenity] (cda4a63a-9ef2-4c66-9b11-ccd474bf4aa5) {'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 11, 407578), 'id': 'cda4a63a-9ef2-4c66-9b11-ccd474bf4aa5', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 11, 407578)}", "[State] (7d5e1594-5242-498e-bc24-1c7baceb4fee) {'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 2, 393367), 'id': '7d5e1594-5242-498e-bc24-1c7baceb4fee', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 2, 393367)}", "[City] (62c496a6-7a6b-4185-bb53-e92870c04d3c) {'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 6, 1272), 'id': '62c496a6-7a6b-4185-bb53-e92870c04d3c', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 6, 1272)}", "[Review] (dc4a95ae-a130-4791-880c-91e288e1cace) {'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 22, 509737), 'id': 'dc4a95ae-a130-4791-880c-91e288e1cace', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 22, 509737)}"]
+(hbnb)
+{"Amenity.cda4a63a-9ef2-4c66-9b11-ccd474bf4aa5": {"updated_at": "2019-11-09T03:39:11.407578", "__class__": "Amenity", "created_at": "2019-11-09T03:39:11.407578", "id": "cda4a63a-9ef2-4c66-9b11-ccd474bf4aa5"}, "State.7d5e1594-5242-498e-bc24-1c7baceb4fee": {"updated_at": "2019-11-09T03:39:02.393367", "__class__": "State", "created_at": "2019-11-09T03:39:02.393367", "id": "7d5e1594-5242-498e-bc24-1c7baceb4fee"}, "City.62c496a6-7a6b-4185-bb53-e92870c04d3c": {"updated_at": "2019-11-09T03:39:06.001272", "__class__": "City", "created_at": "2019-11-09T03:39:06.001272", "id": "62c496a6-7a6b-4185-bb53-e92870c04d3c"}, "Place.82b45132-04bb-4153-bc22-0a2ed44c12c0": {"updated_at": "2019-11-09T03:39:16.767687", "__class__": "Place", "created_at": "2019-11-09T03:39:16.767687", "id": "82b45132-04bb-4153-bc22-0a2ed44c12c0"}, "Review.dc4a95ae-a130-4791-880c-91e288e1cace": {"updated_at": "2019-11-09T03:39:22.509737", "__class__": "Review", "created_at": "2019-11-09T03:39:22.509737", "id": "dc4a95ae-a130-4791-880c-91e288e1cace"}}
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+```
 
 ### [10. Console 1.0](./console.py)
 * Update FileStorage to manage correctly serialization and deserialization of all our new classes: Place, State, City, Amenity and Review
@@ -160,23 +207,58 @@ vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
 
 ### [11. All instances by class name](./console.py)
 * Update your command interpreter (console.py) to retrieve all instances of a class by using: <class name>.all().
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) User.all()
+["[User] (700534fd-2e57-4c5f-86da-4908b9ec483c) {'created_at': datetime.datetime(2019, 11, 9, 3, 43, 28, 44380), 'updated_at': datetime.datetime(2019, 11, 9, 3, 43, 28, 44380), 'id': '700534fd-2e57-4c5f-86da-4908b9ec483c'}", "[User] (f46abdec-26e1-432e-910a-a9fe097870b4) {'created_at': datetime.datetime(2019, 11, 9, 3, 43, 10, 36878), 'updated_at': datetime.datetime(2019, 11, 9, 3, 43, 10, 36878), 'id': 'f46abdec-26e1-432e-910a-a9fe097870b4'}"]
+(hbnb)
+```
 
 ### [12. Count instances](./console.py)
 * Update your command interpreter (console.py) to retrieve the number of instances of a class: <class name>.count().
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) User.count()
+2
+(hbnb)
+```
 
 ### [13. Show](./console.py)
 * Update your command interpreter (console.py) to retrieve an instance based on its ID: <class name>.show(<id>).
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) User.show(f46abdec-26e1-432e-910a-a9fe097870b4)
+[User] (f46abdec-26e1-432e-910a-a9fe097870b4) {'updated_at': datetime.datetime(2019, 11, 9, 3, 43, 10, 36878), 'created_at': datetime.datetime(2019, 11, 9, 3, 43, 10, 36878), 'id': 'f46abdec-26e1-432e-910a-a9fe097870b4'}
+(hbnb)
+```
 
 ### [14. Destroy](./console.py)
 * Update your command interpreter (console.py) to destroy an instance based on his ID: <class name>.destroy(<id>).
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) User.count()
+2
+(hbnb) User.destroy("f46abdec-26e1-432e-910a-a9fe097870b4")
+(hbnb) User.count()
+1
+(hbnb) User.destroy("Holberton")
+** no instance found **
+(hbnb)
+```
 
 ### [15. Update](./console.py)
 * Update your command interpreter (console.py) to update an instance based on his ID: <class name>.update(<id>, <attribute name>, <attribute value>).
-
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) City.show("62c496a6-7a6b-4185-bb53-e92870c04d3c")
+[City] (62c496a6-7a6b-4185-bb53-e92870c04d3c) {'id': '62c496a6-7a6b-4185-bb53-e92870c04d3c', 'created_at': datetime.datetime(2019, 11, 9, 3, 39, 6, 1272), 'updated_at': datetime.datetime(2019, 11, 9, 3, 39, 6, 1272)}
+(hbnb)
+(hbnb) City.update("62c496a6-7a6b-4185-bb53-e92870c04d3c", "name", "Santa Barbara")
+(hbnb) City.update("62c496a6-7a6b-4185-bb53-e92870c04d3c", "home_town", "True")
+(hbnb)
+[City] (62c496a6-7a6b-4185-bb53-e92870c04d3c) {'created_at': datetime.datetime(2019, 11, 9, 3, 39, 6, 1272), 'home_town': 'True', 'id': '62c496a6-7a6b-4185-bb53-e92870c04d3c', 'name': 'Santa Barbara', 'updated_at': datetime.datetime(2019, 11, 9, 3, 49, 5, 85672)}
+(hbnb)
+```
 
 ### [16. Update from dictionary](./tests/test_console.py)
 * Update your command interpreter (console.py) to update an instance based on his ID with a dictionary: <class name>.update(<id>, <dictionary representation>).
@@ -185,4 +267,5 @@ vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
 ---
 
 ## Author
+* **Jessica Bathel** - [jbathel](https://github.com/jbathel)
 * **Ryuichi Miyazaki** - [rmiyazaki6499](https://github.com/rmiyazaki6499)
