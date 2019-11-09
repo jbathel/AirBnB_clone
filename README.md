@@ -104,10 +104,47 @@ vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
 ### [6. Console 0.0.1](./console.py)
 * Write a program called console.py that contains the entry point of the command interpreter:
 
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) help quit
+
+        Quits the command line - type 'quit' to exit command line
+
+(hbnb) quit
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$
+```
 
 ### [7. Console 0.1](./models/user.py)
 * Update your command interpreter (console.py) to have these commands:
 
+```
+vagrant@vagrant-ubuntu-trusty-64:~/AirBnB_clone$ ./console.py
+(hbnb) all MyModel
+** class doesn't exist **
+(hbnb) show BaseModel
+** instance id missing **
+(hbnb) show BaseModel Holberton
+** no instance found **
+(hbnb) create BaseModel
+294c15a7-1530-4c0c-af2f-0491f8794343
+(hbnb) all BaseModel
+["[BaseModel] (294c15a7-1530-4c0c-af2f-0491f8794343) {'id': '294c15a7-1530-4c0c-af2f-0491f8794343', 'created_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216), 'updated_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216)}"]
+(hbnb) show BaseModel 294c15a7-1530-4c0c-af2f-0491f8794343
+[BaseModel] (294c15a7-1530-4c0c-af2f-0491f8794343) {'id': '294c15a7-1530-4c0c-af2f-0491f8794343', 'created_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216), 'updated_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216)}
+(hbnb) destroy
+** class name missing **
+(hbnb) update BaseModel 294c15a7-1530-4c0c-af2f-0491f8794343 first_name "Betty"
+(hbnb) show BaseModel 294c15a7-1530-4c0c-af2f-0491f8794343
+[BaseModel] (294c15a7-1530-4c0c-af2f-0491f8794343) {'id': '294c15a7-1530-4c0c-af2f-0491f8794343', 'first_name': 'Betty', 'created_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216), 'updated_at': datetime.datetime(2019, 11, 9, 2, 15, 17, 941780)}
+(hbnb) create BaseModel
+273f40f9-002b-4dca-98c1-eb45d44797e1
+(hbnb) all BaseModel
+["[BaseModel] (273f40f9-002b-4dca-98c1-eb45d44797e1) {'created_at': datetime.datetime(2019, 11, 9, 2, 16, 24, 845049), 'id': '273f40f9-002b-4dca-98c1-eb45d44797e1', 'updated_at': datetime.datetime(2019, 11, 9, 2, 16, 24, 845049)}", "[BaseModel] (294c15a7-1530-4c0c-af2f-0491f8794343) {'created_at': datetime.datetime(2019, 11, 9, 2, 14, 39, 760216), 'id': '294c15a7-1530-4c0c-af2f-0491f8794343', 'first_name': 'Betty', 'updated_at': datetime.datetime(2019, 11, 9, 2, 15, 17, 941780)}"]
+(hbnb) destroy BaseModel 273f40f9-002b-4dca-98c1-eb45d44797e1
+(hbnb) show BaseModel 273f40f9-002b-4dca-98c1-eb45d44797e1
+** no instance found **
+(hbnb)
+```
 
 ### [8. First User](./models/state.py)
 * Write a class User that inherits from BaseModel:

@@ -20,6 +20,7 @@ class TestPlaceModel(unittest.TestCase):
         self.place1 = Place()
         time.sleep(1)
         self.place2 = Place()
+        Place.name = ''
 
     def test_uuid(self):
         """Test that UUID was created"""
@@ -99,6 +100,10 @@ class TestPlaceModel(unittest.TestCase):
         """Tear down Place Objects for testing"""
         del self.place1
         del self.place2
+
+    def test_class_attribute_value(self):
+        """Test if class attribute name is set"""
+        self.assertTrue(self.place1.name == '')
 
     def test_class_attribute_name(self):
         """Test class attribute name"""

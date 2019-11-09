@@ -20,6 +20,10 @@ class TestUser(unittest.TestCase):
         self.user1 = User()
         time.sleep(1)
         self.user2 = User()
+        User.email = ''
+        User.password = ''
+        User.first_name = ''
+        User.last_name = ''
 
     def test_uuid(self):
         """Test that UUID was created"""
@@ -76,6 +80,18 @@ class TestUser(unittest.TestCase):
         self.user1 = User(**attributes)
         self.assertEqual(attributes['id'], self.user1.id)
 
+    def test_class_attribute_id(self):
+        """Test class attribute id"""
+        self.assertTrue(hasattr(self.user1, 'id'))
+        self.assertTrue(isinstance(self.user1.id, str))
+
+    def test_class_attribute_set(self):
+        """Test if class attributes are set"""
+        self.assertEqual(self.user1.first_name, '')
+        self.assertEqual(self.user1.last_name, '')
+        self.assertEqual(self.user1.email, '')
+        self.assertEqual(self.user1.password, '')
+
     def test_class_attribute_first_name(self):
         """Test class attribute first name"""
         self.assertTrue(hasattr(self.user1, 'first_name'))
@@ -103,6 +119,24 @@ class TestUser(unittest.TestCase):
         User.password = 'password'
         self.assertTrue(isinstance(self.user1.password, str))
         self.assertEqual(User.password, self.user1.password)
+
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.user1.to_dict()
+        self.assertEqual(dictionary["created_at"],
+                         self.user1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"],
+                         self.user1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], 'User')
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.user1.__class__.__name__, self.user1.id, self.user1.__dict__)
+        self.assertEqual(str(self.user1), string)
 
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
