@@ -3,7 +3,6 @@
 This is a Base Module for AirBnB
 """
 from datetime import datetime
-import json
 import models
 import uuid
 
@@ -22,11 +21,11 @@ class BaseModel():
 
         try:
             self.id
-        except:
+        except Exception:
             self.id = str(uuid.uuid4())
         try:
             self.created_at
-        except:
+        except Exception:
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):

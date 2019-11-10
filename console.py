@@ -24,22 +24,19 @@ class HBNBCommand(cmd.Cmd):
     def precmd(self, line):
         """Precommand method"""
         try:
-            first_step = line.split('.')
+            first_split = line.split('.')
             try:
-                model = eval(first_step[0] + '()')
+                model = eval(first_split[0] + '()')
                 if not isinstance(model, BaseModel):
                     raise Exception
-            except:
+            except Exception:
                 return line
-            model = first_step[0]
-            second_step = first_step[1].split('(')
-            command = second_step[0]
-            parameters = second_step[1][:-1]
-            parameters = ' '.join(parameters.split(','))
-            final = [command, model, parameters]
-            preline = " ".join(final)
-            return preline
-        except:
+            model = first_split[0]
+            second_split = first_split[1].split('(')
+            command = second_split[0]
+            parameters = ' '.join(second_split[1][:-1].split(','))
+            return " ".join([command, model, parameters])
+        except Exception:
             return line
 
     def emptyline(self):
@@ -66,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         if len(command) < 1:
             print("** class name missing **")
@@ -75,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(command[0] + '()')
             if not isinstance(obj, BaseModel):
                 raise Exception
-        except:
+        except Exception:
             print("** class doesn't exist **")
             return
         print(obj.id)
@@ -90,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         if len(command) < 1:
             print("** class name missing **")
@@ -99,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(command[0] + '()')
             if not isinstance(obj, BaseModel):
                 raise Exception
-        except:
+        except Exception:
             print("** class doesn't exist **")
             return
         if len(command) < 2:
@@ -120,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         if len(command) < 1:
             print("** class name missing **")
@@ -129,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(command[0] + '()')
             if not isinstance(obj, BaseModel):
                 raise Exception
-        except:
+        except Exception:
             print("** class doesn't exist **")
             return
         if len(command) < 2:
@@ -152,17 +149,17 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         objects = list(storage.all().values())
         if len(command) < 1:
             print([str(obj) for obj in objects])
             return
         try:
-            obj = eval(command[0] + '()')
-            if not isinstance(obj, BaseModel):
+            try_obj = eval(command[0] + '()')
+            if not isinstance(try_obj, BaseModel):
                 raise Exception
-        except:
+        except Exception:
             print("** class doesn't exist **")
             return
         print([str(obj) for obj in objects
@@ -175,7 +172,7 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         if len(command) < 1:
             print("** class name missing **")
@@ -184,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(command[0] + '()')
             if not isinstance(obj, BaseModel):
                 raise Exception
-        except:
+        except Exception:
             print("** class doesn't exist **")
             return
         if len(command) < 2:
@@ -202,10 +199,10 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             command[3] = int(command[3])
-        except:
+        except Exception:
             try:
                 command[3] = float(command[3])
-            except:
+            except Exception:
                 pass
         key = command[0] + '.' + command[1]
         setattr(storage.all()[key], command[2], command[3])
@@ -217,7 +214,7 @@ class HBNBCommand(cmd.Cmd):
         """Count method for the Console"""
         try:
             command = shlex.split(line)
-        except:
+        except Exception:
             return
         count = 0
         for key, obj in storage.all().items():
@@ -225,6 +222,7 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
         return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
