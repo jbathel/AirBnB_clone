@@ -38,5 +38,4 @@ class FileStorage():
                     obj = eval(obj['__class__'])(**(obj))
                     self.__objects[obj_id] = obj
         except:
-            return
-
+            pass
