@@ -4,8 +4,9 @@ This is a Base Module for AirBnB
 """
 from datetime import datetime
 import json
-import uuid
 import models
+import uuid
+
 
 class BaseModel():
     """Base Model"""

@@ -4,6 +4,7 @@ This is a City Module for AirBnB
 """
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
     """City Model"""
 
@@ -11,5 +12,5 @@ class City(BaseModel):
         """Initialize city instance"""
         super().__init__(self, *args, **kwargs)
 
-    state_id = '' #it will be the State.id
+    state_id = ''  # it will be the State.id
     name = ''
