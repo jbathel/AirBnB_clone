@@ -11,44 +11,44 @@ import uuid
 import time
 from datetime import datetime
 
+
 class TestFileStorageModel(unittest.TestCase):
     """Unit Tests for FileStorage Model"""
 
     @classmethod
     def setUp(self):
-        """..."""
+        """Setup Test Suite"""
         FileStorage._FileStorage__file_path = 'file.json'
         FileStorage._FileStorage__objects = {}
 
     def test_FileStorage_file_path_exist(self):
-        """..."""
+        """Check that storage exists"""
         self.assertTrue(hasattr(FileStorage, '_FileStorage__file_path'))
 
     def test_FileStorage__objects_exist(self):
-        """..."""
+        """Check that objects exists"""
         self.assertTrue(hasattr(FileStorage, '_FileStorage__objects'))
 
     def test_FileStorage_file_path_value(self):
-        """..."""
+        """Check that file.json has values"""
         self.assertEqual(FileStorage._FileStorage__file_path, 'file.json')
 
     def test_FileStorage__objects_value(self):
-        """..."""
+        """Test that objects craeted have values"""
         self.assertEqual(FileStorage._FileStorage__objects, {})
 
     def test_FileStorage_file_path_type(self):
-        """..."""
+        """Test that file path is a string"""
         self.assertTrue(isinstance(FileStorage._FileStorage__file_path, str))
 
     def test_FileStorage__objects_value(self):
-        """..."""
+        """Test that objects returned as dictionary"""
         self.assertTrue(isinstance(FileStorage._FileStorage__objects, dict))
-
 
     def test_FileStorage_all(self):
         """Test the all() method in class FileStorage"""
         storage = FileStorage()
-        FileStorage._FileStorage__objects = {'test':'Hi'}
+        FileStorage._FileStorage__objects = {'test': 'Hi'}
         self.assertEqual(FileStorage._FileStorage__objects, storage.all())
 
     def test_FileStorage_new(self):

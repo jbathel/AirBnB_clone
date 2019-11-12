@@ -11,6 +11,7 @@ import uuid
 import time
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     """City uuid testing"""
     def test_uuid(self):
