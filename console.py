@@ -15,16 +15,16 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command Line Module"""
+    """Command Line Module Class"""
 
     prompt = '(hbnb) '
 
     def do_quit(self, line):
-        """..."""
+        """Method to quit command line"""
         exit()
 
     def do_EOF(self, line):
-        """..."""
+        """Method for End Of File"""
         return True
 
     def do_create(self, line):
@@ -102,7 +102,7 @@ class HBNBCommand(cmd.Cmd):
                     print(obj)
 
     def do_update(self, line):
-        """..."""
+        """Method for updating class object"""
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
