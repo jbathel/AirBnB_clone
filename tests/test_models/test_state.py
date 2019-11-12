@@ -11,6 +11,7 @@ import uuid
 import time
 from datetime import datetime
 
+
 class TestState(unittest.TestCase):
     """State uuid testing"""
     def test_uuid(self):
