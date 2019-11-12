@@ -41,7 +41,10 @@ class HBNBCommand(cmd.Cmd):
         Creates new instance of a class called by user:
         Amenity, City, Place, State, Review, User
         """
-        command = shlex.split(line)
+        try:
+            command = shlex.split(line)
+        except:
+            return
         if len(command) < 1:
             print("** class name missing **")
             return
@@ -59,7 +62,10 @@ class HBNBCommand(cmd.Cmd):
         Prints the string representation of an instance
         based on the class name and id
         """
-        command = shlex.split(line)
+        try:
+            command = shlex.split(line)
+        except:
+            return
         if len(command) < 1:
             print("** class name missing **")
             return
@@ -83,7 +89,10 @@ class HBNBCommand(cmd.Cmd):
         Deletes an instance based on the class name and id -
         type destroy <class name>
         """
-        command = shlex.split(line)
+        try:
+            command = shlex.split(line)
+        except:
+            return
         if len(command) < 1:
             print("** class name missing **")
             return
@@ -108,7 +117,10 @@ class HBNBCommand(cmd.Cmd):
         based on the class name or all instances if not
         specified - type all <class name>.
         """
-        command = shlex.split(line)
+        try:
+            command = shlex.split(line)
+        except:
+            return
         objects = list(storage.all().values())
         if len(command) < 1:
             for obj in objects:
@@ -128,7 +140,10 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates class object based on input - type <attribute, value>
         """
-        command = shlex.split(line)
+        try:
+            command = shlex.split(line)
+        except:
+            return
         if len(command) < 1:
             print("** class name missing **")
             return
