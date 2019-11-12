@@ -3,8 +3,14 @@
 This is a module for File Storage
 """
 import json
+import models
+from models.amenity import Amenity
 from models.base_model import BaseModel
-
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 class FileStorage():
     """File Storage Model"""
@@ -14,7 +20,7 @@ class FileStorage():
 
     def all(self):
         """Public instance method that returns the dictionary __objects"""
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """Public instance method that sets in __objects

@@ -12,7 +12,6 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-from models import storage
 import shlex
 
 
@@ -55,8 +54,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(obj.id)
-        storage.new(obj)
-        storage.save()
+        obj.save()
 
     def do_show(self, line):
         """
@@ -83,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
         if key not in storage.all():
             print("** no instance found **")
             return
-        print(storage.all()[key])
+        print(models.storage.all()[key])
 
     def do_destroy(self, line):
         """
@@ -107,10 +105,10 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = command[0] + '.' + command[1]
-        if key not in storage.all():
+        if key not in models.storage.all():
             print("** no instance found **")
-        del(storage.all()[key])
-        storage.save()
+        del(models.storage.all()[key])
+        models.storage.save()
 
     def do_all(self, line):
         """
@@ -122,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             command = shlex.split(line)
         except:
             return
-        objects = list(storage.all().values())
+        objects = list(models.storage.all().values())
         if len(command) < 1:
             for obj in objects:
                 print(obj)
@@ -132,10 +130,9 @@ class HBNBCommand(cmd.Cmd):
         except:
             print("** class doesn't exist **")
             return
-        if command[0]:
-            for obj in objects:
-                if command[0] == obj.__class__.__name__:
-                    print(obj)
+        for obj in objects:
+            if command[0] == obj.__class__.__name__:
+                print(obj)
 
     def do_update(self, line):
         """
@@ -174,9 +171,9 @@ class HBNBCommand(cmd.Cmd):
             except:
                 pass
         key = command[0] + '.' + command[1]
-        setattr(storage.all()[key], command[2], command[3])
-        setattr(storage.all()[key], 'updated_at', datetime.now())
-        storage.save()
+        setattr(models.storage.all()[key], command[2], command[3])
+        setattr(models.storage.all()[key], 'updated_at', datetime.now())
+        models.storage.save()
 
 
 if __name__ == '__main__':
