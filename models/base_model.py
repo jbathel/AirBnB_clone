@@ -4,8 +4,9 @@ This is a Base Module for AirBnB
 """
 from datetime import datetime
 import json
-import uuid
 import models
+import uuid
+
 
 class BaseModel():
     """Base Model"""
@@ -29,18 +30,18 @@ class BaseModel():
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
-        """..."""
+        """Method to print str representation"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        """..."""
+        """Method for saving instances to storage"""
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """..."""
+        """Method to create a dictionary from an instance"""
         dictionary = {}
         dictionary['__class__'] = self.__class__.__name__
         if self.__dict__:
