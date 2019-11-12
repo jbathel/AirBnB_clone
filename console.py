@@ -20,15 +20,22 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_quit(self, line):
-        """Method to quit command line"""
+        """
+        Quits the command line - type 'quit' to exit command line
+        """
         exit()
 
     def do_EOF(self, line):
-        """Method for End Of File"""
+        """
+        EOF - Press C^d to quit command line
+        """
         return True
 
     def do_create(self, line):
-        """Creates new instance of class called"""
+        """
+        Creates new instance of a class called by user:
+        Amenity, City, Place, State, Review, User
+        """
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
@@ -43,8 +50,10 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_show(self, line):
-        """Prints the string representation of an instance
-        based on the class name and id"""
+        """
+        Prints the string representation of an instance
+        based on the class name and id
+        """
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
@@ -64,7 +73,10 @@ class HBNBCommand(cmd.Cmd):
         print(storage.all()[key])
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id"""
+        """
+        Deletes an instance based on the class name and id -
+        type destroy <class name>
+        """
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
@@ -83,8 +95,11 @@ class HBNBCommand(cmd.Cmd):
         del(storage.all()[key])
 
     def do_all(self, line):
-        """Prints all string representation of all instances
-        based or not on the class name."""
+        """
+        Prints a string representation of instances
+        based on the class name or all instances if not
+        specified - type all <class name>.
+        """
         command = shlex.split(line)
         objects = list(storage.all().values())
         if len(command) < 1:
@@ -102,7 +117,9 @@ class HBNBCommand(cmd.Cmd):
                     print(obj)
 
     def do_update(self, line):
-        """Method for updating class object"""
+        """
+        Updates class object based on input - type <attribute, value>
+        """
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
