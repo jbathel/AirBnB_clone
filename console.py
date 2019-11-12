@@ -74,6 +74,7 @@ class HBNBCommand(cmd.Cmd):
         key = command[0] + '.' + command[1]
         if key not in storage.all():
             print("** no instance found **")
+            return
         print(storage.all()[key])
 
     def do_destroy(self, line):
@@ -84,6 +85,7 @@ class HBNBCommand(cmd.Cmd):
         command = shlex.split(line)
         if len(command) < 1:
             print("** class name missing **")
+            return
         try:
             obj = eval(command[0] + '()')
         except:
