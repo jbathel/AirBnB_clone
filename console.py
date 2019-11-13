@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print([str(obj) for obj in objects
-            if command[0] == obj.__class__.__name__])
+               if command[0] == obj.__class__.__name__])
         return
 
     def do_update(self, line):
