@@ -48,8 +48,6 @@ class TestBaseModel(unittest.TestCase):
 
     def test_create_update_not_equal(self):
         """Test that created_at datetime is not the same as updated_at"""
-        self.basemodel1 = BaseModel()
-        time.sleep(2)
         self.basemodel1.updated_at = datetime.now()
         self.assertNotEqual(self.basemodel1.created_at, self.basemodel1.updated_at)
 
