@@ -80,6 +80,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             obj = eval(command[0] + '()')
+            if not isinstance(obj, BaseModel):
+                raise Exception
         except:
             print("** class doesn't exist **")
             return
@@ -108,6 +110,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             obj = eval(command[0] + '()')
+            if not isinstance(obj, BaseModel):
+                raise Exception
         except:
             print("** class doesn't exist **")
             return
@@ -139,6 +143,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             obj = eval(command[0] + '()')
+            if not isinstance(obj, BaseModel):
+                raise Exception
         except:
             print("** class doesn't exist **")
             return
@@ -159,6 +165,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             obj = eval(command[0] + '()')
+            if not isinstance(obj, BaseModel):
+                raise Exception
         except:
             print("** class doesn't exist **")
             return
