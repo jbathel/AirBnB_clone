@@ -21,6 +21,10 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def precmd(self, line):
+        """Precommand method"""
+        return line
+
     def emptyline(self):
         """Empty Line"""
         pass
@@ -124,17 +128,15 @@ class HBNBCommand(cmd.Cmd):
             return
         objects = list(storage.all().values())
         if len(command) < 1:
-            for obj in objects:
-                print(obj)
+            print([str(obj) for obj in objects])
             return
         try:
             obj = eval(command[0] + '()')
         except:
             print("** class doesn't exist **")
             return
-        for obj in objects:
-            if command[0] == obj.__class__.__name__:
-                print(obj)
+        print([str(obj) for obj in objects
+            if command[0] == obj.__class__.__name__])
 
     def do_update(self, line):
         """
