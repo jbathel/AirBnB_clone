@@ -23,7 +23,24 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line):
         """Precommand method"""
-        return line
+        try:
+            first_step = line.split('.')
+            try:
+                model = eval(first_step[0] + '()')
+                if not isinstance(model, BaseModel):
+                    raise Exception
+            except:
+                return line
+            model = first_step[0]
+            second_step = first_step[1].split('(')
+            command = second_step[0]
+            parameters = second_step[1][:-1]
+            parameters = ' '.join(parameters.split(','))
+            final = [command, model, parameters]
+            preline = " ".join(final)
+            return preline
+        except:
+            return line
 
     def emptyline(self):
         """Empty Line"""
