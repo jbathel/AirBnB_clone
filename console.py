@@ -39,6 +39,7 @@ class HBNBCommand(cmd.Cmd):
         """
         EOF - Press C^d to quit command line
         """
+        print('')
         return True
 
     def do_create(self, line):
@@ -55,6 +56,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             obj = eval(command[0] + '()')
+            if not isinstance(obj, BaseModel):
+                raise Exception
         except:
             print("** class doesn't exist **")
             return
