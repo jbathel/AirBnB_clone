@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
             return
         print([str(obj) for obj in objects
             if command[0] == obj.__class__.__name__])
-            return
+        return
 
     def do_update(self, line):
         """
