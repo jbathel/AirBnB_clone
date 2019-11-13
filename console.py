@@ -4,6 +4,7 @@ Module for console
 """
 import cmd
 from datetime import datetime
+import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -131,10 +132,9 @@ class HBNBCommand(cmd.Cmd):
         except:
             print("** class doesn't exist **")
             return
-        if command[0]:
-            for obj in objects:
-                if command[0] == obj.__class__.__name__:
-                    print(obj)
+        for obj in objects:
+            if command[0] == obj.__class__.__name__:
+                print(obj)
 
     def do_update(self, line):
         """
