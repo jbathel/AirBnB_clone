@@ -8,10 +8,6 @@ from models.base_model import BaseModel
 class Place(BaseModel):
     """Place Model"""
 
-    def __init__(self, *args, **kwargs):
-        """Initialize Place instance"""
-        super().__init__(self, *args, **kwargs)
-
     city_id = ''  # it will be the City.id
     user_id = ''  # it will be the User.id
     name = ''
