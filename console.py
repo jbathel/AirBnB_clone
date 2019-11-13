@@ -61,6 +61,7 @@ class HBNBCommand(cmd.Cmd):
         print(obj.id)
         storage.new(obj)
         storage.save()
+        return
 
     def do_show(self, line):
         """
@@ -88,6 +89,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         print(storage.all()[key])
+        return
 
     def do_destroy(self, line):
         """
@@ -116,6 +118,7 @@ class HBNBCommand(cmd.Cmd):
             return
         del(storage.all()[key])
         storage.save()
+        return
 
     def do_all(self, line):
         """
@@ -138,6 +141,7 @@ class HBNBCommand(cmd.Cmd):
             return
         print([str(obj) for obj in objects
             if command[0] == obj.__class__.__name__])
+            return
 
     def do_update(self, line):
         """
@@ -179,6 +183,7 @@ class HBNBCommand(cmd.Cmd):
         setattr(storage.all()[key], command[2], command[3])
         setattr(storage.all()[key], 'updated_at', datetime.now())
         storage.save()
+        return
 
 
 if __name__ == '__main__':
