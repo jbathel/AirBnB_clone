@@ -74,6 +74,16 @@ class TestBaseModel(unittest.TestCase):
         self.basemodel1 = BaseModel(**attributes)
         self.assertEqual(attributes['id'], self.basemodel1.id)
 
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.basemodel1.to_dict()
+        self.assertEqual(dictionary["created_at"], self.basemodel1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"], self.basemodel1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], "BaseModel")
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
     def tearDown(self):
         """Tear dowm BaseModel Objects for testing"""
         del self.basemodel1
