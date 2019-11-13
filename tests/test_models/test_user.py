@@ -29,9 +29,13 @@ class TestUser(unittest.TestCase):
         """Test that the UUIDs created are unique"""
         self.assertNotEqual(self.user1.id, self.user2.id)
 
-    def test_base_model(self):
-        """Test that object created is of BaseModel"""
+    def test_user_model(self):
+        """Test that object created is of User"""
         self.assertIsInstance(self.user1, User)
+
+    def test_user_model_BaseModel(self):
+        """Test that object created is of BaseModel"""
+        self.assertIsInstance(self.user1, BaseModel)
 
     def test_uuid_str(self):
         """Test that id is of type string"""

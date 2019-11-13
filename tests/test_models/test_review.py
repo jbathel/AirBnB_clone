@@ -30,8 +30,12 @@ class TestReview(unittest.TestCase):
         self.assertNotEqual(self.review1.id, self.review2.id)
 
     def test_review_model(self):
-        """Test that object created is of BaseModel"""
+        """Test that object created is of Review"""
         self.assertIsInstance(self.review1, Review)
+
+    def test_review_model_BaseModel(self):
+        """Test that object created is of BaseModel"""
+        self.assertIsInstance(self.review1, BaseModel)
 
     def test_uuid_str(self):
         """Test that id is of type string"""
