@@ -21,6 +21,15 @@ class TestCityModel(unittest.TestCase):
         time.sleep(1)
         self.city2 = City()
 
+    def test_class_attribute(self):
+        """Test class attribute"""
+        self.assertTrue(hasattr(self.city1, 'name'))
+        self.assertTrue(isinstance(self.city1.name, str))
+        self.assertTrue(self.city1.name == '')
+        City.name = 'Santa Barbara'
+        self.assertEqual(self.city1.name, 'Santa Barbara')
+        self.assertEqual(self.city1.name, self.city2.name)
+
     def test_uuid(self):
         """Test that UUID was created"""
         self.assertTrue(hasattr(self.city1, 'id'))
