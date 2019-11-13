@@ -33,6 +33,10 @@ class TestAmenityModel(unittest.TestCase):
         """Test that object created is Amenity"""
         self.assertIsInstance(self.amenity1, Amenity)
 
+    def test_amenity_model_of_BaseModel(self):
+        """Test that object created is Amenity"""
+        self.assertIsInstance(self.amenity1, BaseModel)
+
     def test_uuid_str(self):
         """Test that id for Amenity is type string"""
         self.assertIsInstance(self.amenity1.id, str)

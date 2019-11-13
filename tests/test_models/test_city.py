@@ -29,9 +29,13 @@ class TestCityModel(unittest.TestCase):
         """Test that the UUIDs created are unique"""
         self.assertNotEqual(self.city1.id, self.city2.id)
 
-    def test_base_model(self):
-        """Test that object created is of BaseModel"""
+    def test_city_model(self):
+        """Test that object created is of City"""
         self.assertIsInstance(self.city1, City)
+
+    def test_city_model_BaseModel(self):
+        """Test that object created is of BaseModel"""
+        self.assertIsInstance(self.city1, BaseModel)
 
     def test_uuid_str(self):
         """Test that id is of type string"""
