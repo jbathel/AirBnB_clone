@@ -91,7 +91,8 @@ class TestPlaceModel(unittest.TestCase):
     def test_str(self):
         """Test output string of the objects"""
         string = "[{}] ({}) {}".format(
-            self.place1.__class__.__name__, self.place1.id, self.place1.__dict__)
+            self.place1.__class__.__name__,
+            self.place1.id, self.place1.__dict__)
         self.assertEqual(str(self.place1), string)
 
     def tearDown(self):

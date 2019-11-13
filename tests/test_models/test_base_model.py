@@ -82,9 +82,11 @@ class TestBaseModel(unittest.TestCase):
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         dictionary = self.basemodel1.to_dict()
         self.assertEqual(
-            dictionary["created_at"], self.basemodel1.created_at.strftime(time_format))
+            dictionary["created_at"],
+            self.basemodel1.created_at.strftime(time_format))
         self.assertEqual(
-            dictionary["updated_at"], self.basemodel1.updated_at.strftime(time_format))
+            dictionary["updated_at"],
+            self.basemodel1.updated_at.strftime(time_format))
         self.assertEqual(dictionary["__class__"], "BaseModel")
         self.assertEqual(type(dictionary["created_at"]), str)
         self.assertEqual(type(dictionary["updated_at"]), str)
@@ -92,7 +94,8 @@ class TestBaseModel(unittest.TestCase):
     def test_str(self):
         """Test output string of the objects"""
         string = "[{}] ({}) {}".format(
-            self.basemodel1.__class__.__name__, self.basemodel1.id, self.basemodel1.__dict__)
+            self.basemodel1.__class__.__name__,
+            self.basemodel1.id, self.basemodel1.__dict__)
         self.assertEqual(str(self.basemodel1), string)
 
     def tearDown(self):

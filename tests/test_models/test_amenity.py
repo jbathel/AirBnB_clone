@@ -91,7 +91,8 @@ class TestAmenityModel(unittest.TestCase):
     def test_str(self):
         """Test output string of the objects"""
         string = "[{}] ({}) {}".format(
-            self.amenity1.__class__.__name__, self.amenity1.id, self.amenity1.__dict__)
+            self.amenity1.__class__.__name__,
+            self.amenity1.id, self.amenity1.__dict__)
         self.assertEqual(str(self.amenity1), string)
 
     def tearDown(self):

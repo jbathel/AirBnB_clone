@@ -91,7 +91,8 @@ class TestState(unittest.TestCase):
     def test_str(self):
         """Test output string of the objects"""
         string = "[{}] ({}) {}".format(
-            self.state1.__class__.__name__, self.state1.id, self.state1.__dict__)
+            self.state1.__class__.__name__,
+            self.state1.id, self.state1.__dict__)
         self.assertEqual(str(self.state1), string)
 
     def tearDown(self):
