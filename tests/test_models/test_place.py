@@ -81,5 +81,39 @@ class TestPlaceModel(unittest.TestCase):
         del self.place1
         del self.place2
 
+    def test_class_attribute(self):
+        """Test class attribute"""
+        self.assertTrue(hasattr(self.place1, 'name'))
+        self.assertTrue(isinstance(self.place1.name, str))
+        self.assertTrue(self.place1.name == '')
+        # Place.city_id =
+        # Place.user_id =
+        Place.name = 'Hayward'
+        Place.description = 'Melting Pot'
+        Place.number_rooms = 4
+        Place.number_bathrooms = 4
+        Place.max_guest = 8
+        Place.price_by_night = 200
+        Place.latitude = 37.6688
+        Place.longitude = 122.0810
+        # Place.amenity_ids =
+        self.assertEqual(self.place1.name, 'Hayward')
+        self.assertTrue(isinstance(self.place1.name, str))
+        self.assertEqual(self.place1.description, 'Melting Pot')
+        self.assertTrue(isinstance(self.place1.description, str))
+        self.assertEqual(self.place1.number_rooms, 4)
+        self.assertTrue(isinstance(self.place1.number_rooms, int))
+        self.assertEqual(self.place1.number_bathrooms, 4)
+        self.assertTrue(isinstance(self.place1.number_bathrooms, int))
+        self.assertEqual(self.place1.max_guest, 8)
+        self.assertTrue(isinstance(self.place1.max_guest, int))
+        self.assertEqual(self.place1.price_by_night, 200)
+        self.assertTrue(isinstance(self.place1.price_by_night, int))
+        self.assertEqual(self.place1.latitude, 37.6688)
+        self.assertTrue(isinstance(self.place1.latitude, float))
+        self.assertEqual(self.place1.longitude, 122.0810)
+        self.assertTrue(isinstance(self.place1.longitude, float))
+        self.assertEqual(self.place1.name, self.place2.name)
+
 if __name__ == '__main__':
     unittest.main()
