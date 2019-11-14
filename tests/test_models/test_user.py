@@ -76,22 +76,33 @@ class TestUser(unittest.TestCase):
         self.user1 = User(**attributes)
         self.assertEqual(attributes['id'], self.user1.id)
 
-    def test_class_attribute(self):
-        """Test class attribute"""
-        self.assertTrue(hasattr(self.user1, 'id'))
-        self.assertTrue(isinstance(self.user1.id, str))
-        User.email = '811@holbertonschool.com'
-        User.password = 'password'
+    def test_class_attribute_first_name(self):
+        """Test class attribute first name"""
+        self.assertTrue(hasattr(self.user1, 'first_name'))
         User.first_name = 'Ryuichi'
-        User.last_name = 'Miyazaki'
-        self.assertEqual(self.user1.email, '811@holbertonschool.com')
-        self.assertTrue(isinstance(self.user1.email, str))
-        self.assertEqual(self.user1.password, 'password')
-        self.assertTrue(isinstance(self.user1.password, str))
-        self.assertEqual(self.user1.first_name, 'Ryuichi')
         self.assertTrue(isinstance(self.user1.first_name, str))
-        self.assertEqual(self.user1.last_name, 'Miyazaki')
+        self.assertEqul(User.first_name, self.user1.first_name)
+
+    def test_class_attribute_last_name(self):
+        """Test class attribute last name"""
+        self.assertTrue(hasattr(self.user1, 'last_name'))
+        User.last_name = 'Miyazaki'
         self.assertTrue(isinstance(self.user1.last_name, str))
+        self.assertEqul(User.last_name, self.user1.last_name)
+
+    def test_class_attribute_email(self):
+        """Test class attribute email"""
+        self.assertTrue(hasattr(self.user1, 'email'))
+        User.email = '811@holbertonschool.com'
+        self.assertTrue(isinstance(self.user1.email, str))
+        self.assertEqul(User.email, self.user1.email)
+
+    def test_class_attribute_password(self):
+        """Test class attribute password"""
+        self.assertTrue(hasattr(self.user1, 'password'))
+        User.password = 'password'
+        self.assertTrue(isinstance(self.user1.password, str))
+        self.assertEqul(User.password, self.user1.password)
 
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
