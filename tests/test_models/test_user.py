@@ -74,6 +74,13 @@ class TestUser(unittest.TestCase):
         """Test that updated_at is a datetime object"""
         self.assertTrue(isinstance(self.user1.updated_at, datetime))
 
+    def test_class_attribute_set(self):
+        """Test if class attributes are set"""
+        self.assertEqual(self.user1.first_name, '')
+        self.assertEqual(self.user1.last_name, '')
+        self.assertEqual(self.user1.email, '')
+        self.assertEqual(self.user1.password, '')
+
     def test_base_model_input_dict(self):
         """Test if able to add attiributes using dictionary"""
         attributes = {"id": "1"}
