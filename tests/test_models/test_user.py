@@ -35,7 +35,8 @@ class TestUser(unittest.TestCase):
 
     def test_user_model_BaseModel(self):
         """Test that object created is of BaseModel"""
-        self.assertIsInstance(self.user1, BaseModel)
+        self.assertTrue(issubclass(type(self.user1), BaseModel)
+                        )
 
     def test_uuid_str(self):
         """Test that id is of type string"""
@@ -76,10 +77,29 @@ class TestUser(unittest.TestCase):
         self.user1 = User(**attributes)
         self.assertEqual(attributes['id'], self.user1.id)
 
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.user1.to_dict()
+        self.assertEqual(dictionary["created_at"],
+                         self.user1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"],
+                         self.user1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], 'User')
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.user1.__class__.__name__, self.user1.id, self.user1.__dict__)
+        self.assertEqual(str(self.user1), string)
+
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
         del self.user1
         del self.user2
+
 
 if __name__ == '__main__':
     unittest.main()

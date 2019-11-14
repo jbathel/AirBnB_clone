@@ -35,7 +35,7 @@ class TestReview(unittest.TestCase):
 
     def test_review_model_BaseModel(self):
         """Test that object created is of BaseModel"""
-        self.assertIsInstance(self.review1, BaseModel)
+        self.assertTrue(issubclass(type(self.review1), BaseModel))
 
     def test_uuid_str(self):
         """Test that id is of type string"""
@@ -86,6 +86,29 @@ class TestReview(unittest.TestCase):
         Review.text = 'Fabulous!'
         self.assertEqual(self.review1.text, 'Fabulous!')
         self.assertTrue(isinstance(self.review1.text, str))
+
+    def test_to_dict_attr(self):
+        """ created_at, updated_at values """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        dictionary = self.review1.to_dict()
+        self.assertEqual(dictionary["created_at"],
+                         self.review1.created_at.strftime(time_format))
+        self.assertEqual(dictionary["updated_at"],
+                         self.review1.updated_at.strftime(time_format))
+        self.assertEqual(dictionary["__class__"], "Review")
+        self.assertEqual(type(dictionary["created_at"]), str)
+        self.assertEqual(type(dictionary["updated_at"]), str)
+
+    def test_str(self):
+        """Test output string of the objects"""
+        string = "[{}] ({}) {}".format(
+            self.review1.__class__.__name__, self.review1.id, self.review1.__dict__)
+        self.assertEqual(str(self.review1), string)
+
+    def tearDown(self):
+        """Tear down Amenity Objects for testing"""
+        del self.review1
+        del self.review2
 
 if __name__ == '__main__':
     unittest.main()
