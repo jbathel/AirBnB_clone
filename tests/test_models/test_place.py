@@ -100,39 +100,61 @@ class TestPlaceModel(unittest.TestCase):
         del self.place1
         del self.place2
 
-    def test_class_attribute(self):
-        """Test class attribute"""
-        self.assertTrue(hasattr(self.place1, 'name'))
-        self.assertTrue(isinstance(self.place1.name, str))
-        self.assertTrue(self.place1.name == '')
-        # Place.city_id =
-        # Place.user_id =
+    def test_class_attribute_name(self):
+        """Test class attribute name"""
         Place.name = 'Hayward'
-        Place.description = 'Melting Pot'
-        Place.number_rooms = 4
-        Place.number_bathrooms = 4
-        Place.max_guest = 8
-        Place.price_by_night = 200
-        Place.latitude = 37.6688
-        Place.longitude = 122.0810
-        # Place.amenity_ids =
+        self.assertTrue(hasattr(self.place1, 'name'))
         self.assertEqual(self.place1.name, 'Hayward')
         self.assertTrue(isinstance(self.place1.name, str))
-        self.assertEqual(self.place1.description, 'Melting Pot')
+
+    def test_class_attribute_description(self):
+        """Test class attribute description"""
+        Place.description = 'Heart of the Bay'
+        self.assertTrue(hasattr(self.place1, 'description'))
+        self.assertEqual(self.place1.description, 'Heart of the Bay')
         self.assertTrue(isinstance(self.place1.description, str))
+
+    def test_class_attribute_number_rooms(self):
+        """Test class attribute number of rooms"""
+        Place.number_rooms = 4
+        self.assertTrue(hasattr(self.place1, 'number_rooms'))
         self.assertEqual(self.place1.number_rooms, 4)
         self.assertTrue(isinstance(self.place1.number_rooms, int))
+
+    def test_class_attribute_number_bathrooms(self):
+        """Test class attribute number of bathrooms"""
+        Place.number_bathrooms = 4
+        self.assertTrue(hasattr(self.place1, 'number_bathrooms'))
         self.assertEqual(self.place1.number_bathrooms, 4)
         self.assertTrue(isinstance(self.place1.number_bathrooms, int))
+
+    def test_class_attribute_max_guest(self):
+        """Test class attribute max guest"""
+        Place.max_guest = 8
+        self.assertTrue(hasattr(self.place1, 'max_guest'))
         self.assertEqual(self.place1.max_guest, 8)
         self.assertTrue(isinstance(self.place1.max_guest, int))
+
+    def test_class_attribute_price(self):
+        """Test class attribute price"""
+        Place.price_by_night = 200
+        self.assertTrue(hasattr(self.place1, 'price_by_night'))
         self.assertEqual(self.place1.price_by_night, 200)
         self.assertTrue(isinstance(self.place1.price_by_night, int))
+
+    def test_class_attribute_latitude(self):
+        """Test class attribute latitude"""
+        Place.latitude = 37.6688
+        self.assertTrue(hasattr(self.place1, 'latitude'))
         self.assertEqual(self.place1.latitude, 37.6688)
         self.assertTrue(isinstance(self.place1.latitude, float))
+
+    def test_class_attribute_longitude(self):
+        """Test class attribute longitude"""
+        Place.longitude = 122.0810
+        self.assertTrue(hasattr(self.place1, 'longitude'))
         self.assertEqual(self.place1.longitude, 122.0810)
         self.assertTrue(isinstance(self.place1.longitude, float))
-        self.assertEqual(self.place1.name, self.place2.name)
 
 if __name__ == '__main__':
     unittest.main()
