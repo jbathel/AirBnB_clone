@@ -21,6 +21,15 @@ class TestAmenityModel(unittest.TestCase):
         time.sleep(1)
         self.amenity2 = Amenity()
 
+    def test_class_attribute(self):
+        """Test class attribute"""
+        self.assertTrue(hasattr(self.amenity1, 'name'))
+        self.assertTrue(isinstance(self.amenity1.name, str))
+        self.assertTrue(self.amenity1.name == '')
+        Amenity.name = 'Jessica'
+        self.assertEqual(self.amenity1.name, 'Jessica')
+        self.assertEqual(self.amenity1.name, self.amenity2.name)
+
     def test_uuid(self):
         """Test if Amenity has attribute id"""
         self.assertTrue(hasattr(self.amenity1, 'id'))
