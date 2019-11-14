@@ -76,6 +76,17 @@ class TestReview(unittest.TestCase):
         self.review1 = Review(**attributes)
         self.assertEqual(attributes['id'], self.review1.id)
 
+    def test_class_attribute(self):
+        """Test class attribute"""
+        self.assertTrue(hasattr(self.review1, 'text'))
+        self.assertTrue(isinstance(self.review1.text, str))
+        self.assertTrue(self.review1.text == '')
+        # place_id =
+        # user_id =
+        Review.text = 'Fabulous!'
+        self.assertEqual(self.review1.text, 'Fabulous!')
+        self.assertTrue(isinstance(self.review1.text, str))
+
     def test_to_dict_attr(self):
         """ created_at, updated_at values """
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
@@ -98,7 +109,6 @@ class TestReview(unittest.TestCase):
         """Tear down Amenity Objects for testing"""
         del self.review1
         del self.review2
-
 
 if __name__ == '__main__':
     unittest.main()

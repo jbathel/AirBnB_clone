@@ -213,6 +213,18 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
         return
 
+    def do_count(self, line):
+        """Count method for the Console"""
+        try:
+            command = shlex.split(line)
+        except:
+            return
+        count = 0
+        for key, obj in storage.all().items():
+            if obj.__class__.__name__ == str(command[0]):
+                count += 1
+        print(count)
+        return
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
