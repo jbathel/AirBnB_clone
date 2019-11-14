@@ -81,28 +81,28 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(self.user1, 'first_name'))
         User.first_name = 'Ryuichi'
         self.assertTrue(isinstance(self.user1.first_name, str))
-        self.assertEqul(User.first_name, self.user1.first_name)
+        self.assertEqual(User.first_name, self.user1.first_name)
 
     def test_class_attribute_last_name(self):
         """Test class attribute last name"""
         self.assertTrue(hasattr(self.user1, 'last_name'))
         User.last_name = 'Miyazaki'
         self.assertTrue(isinstance(self.user1.last_name, str))
-        self.assertEqul(User.last_name, self.user1.last_name)
+        self.assertEqual(User.last_name, self.user1.last_name)
 
     def test_class_attribute_email(self):
         """Test class attribute email"""
         self.assertTrue(hasattr(self.user1, 'email'))
         User.email = '811@holbertonschool.com'
         self.assertTrue(isinstance(self.user1.email, str))
-        self.assertEqul(User.email, self.user1.email)
+        self.assertEqual(User.email, self.user1.email)
 
     def test_class_attribute_password(self):
         """Test class attribute password"""
         self.assertTrue(hasattr(self.user1, 'password'))
         User.password = 'password'
         self.assertTrue(isinstance(self.user1.password, str))
-        self.assertEqul(User.password, self.user1.password)
+        self.assertEqual(User.password, self.user1.password)
 
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
