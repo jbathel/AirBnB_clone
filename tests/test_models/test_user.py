@@ -74,6 +74,13 @@ class TestUser(unittest.TestCase):
         """Test that updated_at is a datetime object"""
         self.assertTrue(isinstance(self.user1.updated_at, datetime))
 
+    def test_class_attribute_set(self):
+        """Test if class attributes are set"""
+        self.assertEqual(self.user1.first_name, '')
+        self.assertEqual(self.user1.last_name, '')
+        self.assertEqual(self.user1.email, '')
+        self.assertEqual(self.user1.password, '')
+
     def test_base_model_input_dict(self):
         """Test if able to add attiributes using dictionary"""
         attributes = {"id": "1"}
@@ -97,28 +104,24 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(self.user1, 'first_name'))
         User.first_name = 'Ryuichi'
         self.assertTrue(isinstance(self.user1.first_name, str))
-        self.assertEqual(User.first_name, self.user1.first_name)
 
     def test_class_attribute_last_name(self):
         """Test class attribute last name"""
         self.assertTrue(hasattr(self.user1, 'last_name'))
         User.last_name = 'Miyazaki'
         self.assertTrue(isinstance(self.user1.last_name, str))
-        self.assertEqual(User.last_name, self.user1.last_name)
 
     def test_class_attribute_email(self):
         """Test class attribute email"""
         self.assertTrue(hasattr(self.user1, 'email'))
         User.email = '811@holbertonschool.com'
         self.assertTrue(isinstance(self.user1.email, str))
-        self.assertEqual(User.email, self.user1.email)
 
     def test_class_attribute_password(self):
         """Test class attribute password"""
         self.assertTrue(hasattr(self.user1, 'password'))
         User.password = 'password'
         self.assertTrue(isinstance(self.user1.password, str))
-        self.assertEqual(User.password, self.user1.password)
 
     def test_to_dict_attr(self):
         """ created_at, updated_at values """
