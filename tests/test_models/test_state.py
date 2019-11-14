@@ -25,6 +25,11 @@ class TestState(unittest.TestCase):
         """Test that UUID was created"""
         self.assertTrue(hasattr(self.state1, 'id'))
 
+    def test_uuid_name(self):
+        """Test that State has name attribute and is a string"""
+        self.assertTrue(hasattr(self.state1, 'name'))
+        self.assertTrue(isinstance(self.state1.name, str))
+
     def test_uniq_uuid(self):
         """Test that the UUIDs created are unique"""
         self.assertNotEqual(self.state1.id, self.state2.id)
