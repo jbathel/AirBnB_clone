@@ -102,26 +102,30 @@ class TestUser(unittest.TestCase):
     def test_class_attribute_first_name(self):
         """Test class attribute first name"""
         self.assertTrue(hasattr(self.user1, 'first_name'))
-        User.first_name = 'Ryuichi'
+        User.first_name = ''
         self.assertTrue(isinstance(self.user1.first_name, str))
+        self.assertEqual(self.user1.first_name, '')
 
     def test_class_attribute_last_name(self):
         """Test class attribute last name"""
         self.assertTrue(hasattr(self.user1, 'last_name'))
-        User.last_name = 'Miyazaki'
+        User.last_name = ''
         self.assertTrue(isinstance(self.user1.last_name, str))
+        self.assertEqual(self.user1.last_name, '')
 
     def test_class_attribute_email(self):
         """Test class attribute email"""
         self.assertTrue(hasattr(self.user1, 'email'))
-        User.email = '811@holbertonschool.com'
+        User.email = ''
         self.assertTrue(isinstance(self.user1.email, str))
+        self.assertEqual(self.user1.email, '')
 
     def test_class_attribute_password(self):
         """Test class attribute password"""
         self.assertTrue(hasattr(self.user1, 'password'))
-        User.password = 'password'
+        User.password = ''
         self.assertTrue(isinstance(self.user1.password, str))
+        self.assertEqual(self.user1.password, '')
 
     def test_to_dict_attr(self):
         """ created_at, updated_at values """
@@ -145,6 +149,10 @@ class TestUser(unittest.TestCase):
         """Tear down Amenity Objects for testing"""
         del self.user1
         del self.user2
+        User.email = ''
+        User.password = ''
+        User.first_name = ''
+        User.last_name = ''
 
 if __name__ == '__main__':
     unittest.main()
