@@ -76,10 +76,10 @@ class TestUser(unittest.TestCase):
 
     def test_class_attribute_set(self):
         """Test if class attributes are set"""
-        self.assertEqual(self.user1.first_name, '')
-        self.assertEqual(self.user1.last_name, '')
-        self.assertEqual(self.user1.email, '')
-        self.assertEqual(self.user1.password, '')
+        self.assertEqual(User.first_name, '')
+        self.assertEqual(User.last_name, '')
+        self.assertEqual(User.email, '')
+        self.assertEqual(User.password, '')
 
     def test_base_model_input_dict(self):
         """Test if able to add attiributes using dictionary"""
