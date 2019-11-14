@@ -20,6 +20,10 @@ class TestUser(unittest.TestCase):
         self.user1 = User()
         time.sleep(1)
         self.user2 = User()
+        User.email = ''
+        User.password = ''
+        User.first_name = ''
+        User.last_name = ''
 
     def test_uuid(self):
         """Test that UUID was created"""
@@ -99,7 +103,6 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(self.user1, 'password'))
         User.password = 'password'
         self.assertTrue(isinstance(self.user1.password, str))
-        self.assertEqual(User.password, self.user1.password)
 
     def tearDown(self):
         """Tear down Amenity Objects for testing"""
