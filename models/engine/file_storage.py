@@ -48,5 +48,5 @@ class FileStorage():
                 for obj_id, obj in (json.load(json_file)).items():
                     obj = eval(obj['__class__'])(**(obj))
                     self.__objects[obj_id] = obj
-        except:
+        except Exception:
             pass
