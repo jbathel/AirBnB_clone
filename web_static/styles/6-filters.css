@@ -1,0 +1,114 @@
+/* ----------------------------------------- */
+.container .filters {
+    color: #ffffff;
+    height: 70px;
+    width: inherit;
+    border: 1px solid #dddddd;
+    border-radius: 4px; 
+}
+.filters > button {
+    font-size: 18px;
+    background-color: #ff5a5f;
+    color: #ffffff;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin: 11px 30px auto 11px;
+    float: right;
+}
+.btn:hover {
+    opacity: 90%;
+}
+.filters .locations {
+    height: inherit;
+    width: 25%;
+    border-right: 1px solid #dddddd;
+    float: left;
+    z-index: 1;
+}
+.filters .amenities {
+    height: 100%;
+    width: 25%;
+    float: left;
+}
+.filters button a {
+    text-decoration: none;
+}
+/* ----------------------------------------- */
+h2 {
+    font-size: 16px;
+}
+h3 {
+    font-weight: 600;
+    color: #484848;
+    text-align: left;
+    text-indent: 40px;
+    margin: 2px;
+    width: 100%;
+}
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #484848;    
+    text-indent: 40px;
+    text-align: left;
+    margin: 2px;
+    width: 100%;
+}
+.popover ul {
+    list-style: none;
+    }
+    .popover li {
+        list-style: none;
+        text-indent: 10px;
+    }
+/* ----------------------------------------- */
+#hover_locations {
+    color: #484848;
+    background-color: #FAFAFA;
+    background: solid;
+    border: #DDDDDD 1px solid; 
+    border-radius: 4px;
+    margin: 0px -1px;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    position: relative;
+    visibility: hidden;
+}
+#btn_locations {
+    border: none;
+    cursor: pointer;
+    visibility: visible;
+    opacity: 100%;
+    width: 100%;
+    height: 100%;
+}
+#btn_locations:hover + #hover_locations {
+    visibility: visible;
+}
+/* ----------------------------------------- */
+#hover_amenities {
+    color: #484848;
+    background-color: #FAFAFA;
+    background: solid;
+    border: #DDDDDD 1px solid; 
+    border-radius: 4px;
+    margin: 0px -1px;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    position: relative;
+    visibility: hidden;
+}
+#btn_amenities {
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#btn_amenities:hover + #hover_amenities {
+    visibility: visible;
+}

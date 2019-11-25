@@ -1,0 +1,23 @@
+.container .filters {
+    color: #ffffff;
+    height: 70px;
+    width: inherit;
+    border: 1px solid #dddddd;
+    border-radius: 4px; 
+}
+
+.filters > button {
+    font-size: 18px;
+    background-color: #ff5a5f;
+    color: #ffffff;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin: 11px 30px auto 11px;
+    float: right;
+}
+
+.btn:hover {
+    opacity: 90%;
+}
